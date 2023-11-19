@@ -5,56 +5,70 @@ import "./Navbar.css";
 
 const Navbar = () => {
     const [profilePicture, setProfilePicture] = useState(null);
-    const handleProfilePictureChange = (event) => {
-    const file = event.target.files[0];
-    setProfilePicture(file);
-};
+    const [showDefaultPicture, setShowDefaultPicture] = useState(true);
+    
 
-const handleProfilePictureClick = () => {
-    if (fileInputRef.current) {
-        fileInputRef.current.click();
-    }
-};
+    const handleProfilePictureChange = (event) => {
+        const file = event.target.files[0];
+        setProfilePicture(file);
+        setShowDefaultPicture(false); // Hide the default picture
+    };
+
+    const handleProfilePictureClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
 
 const fileInputRef = React.createRef();
 return (
-    <div>
-        <div className={"flex items-center"}>
-            <img src="../img/icons/PhotoBomb.jpg" alt="PhotoBomb Logo" />
-            <p className={"flex ml-2"}> PhotoBomb !</p>
-        </div>
-        <div className="search p-2 xl:w-full 2xl:w-full xl:col-span-1 lg:justify-center grid 2xl:col-span-3 grid lg:justify-center lg:hidden md:hidden">
-                <div className="form">
-                    <input type="text" className={"h-10 p-2"} placeholder={"Search"}/>
+    <div className="navbar-container">
+            <div className="flex items-center">
+                <div className="logo-container">
+                    <img src="https://t3.ftcdn.net/jpg/01/61/42/50/360_F_161425039_vuK1oc7jCY3LU4Zfxu6WEJBaQXdxvXjh.jpg"
+                    alt=""
+                    className="logo-icon"
+                    />
+                    <p className="logo-text">PhotoBomb !</p>
                 </div>
+                <div className="search-container">
+                    <div className="form">
+                        <input type="text" className="search-input" placeholder="Rechercher une image" />
+                    </div>
+                </div>
+                <ul className="nav-links">
+                    <li><a href="/">CREATE</a></li>
+                    <li><a href="/">UPLOAD</a></li>
+                </ul>
+                <div className="profile-picture-section">
+                {showDefaultPicture ? (
+                        <span className="upload-link" onClick={handleProfilePictureClick}>
+                            <img
+                                src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.webp"
+                                alt=""
+                                className="profile-picture-icon"
+                            />
+                        </span>
+                    ) : null}
+                    {/* Hidden file input for profile picture upload */}
+                    <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={handleProfilePictureChange}
+                        ref={fileInputRef}
+                    />
+                    {/* Display profile picture if available */}
+                    {profilePicture && (
+                        <img
+                            src={URL.createObjectURL(profilePicture)}
+                            alt="Profile"
+                            className="profile-picture"
+                        />
+                    )}
+                </div>
+            </div>
         </div>
-        <ul>
-            <li className={"mb-3"}><a href=""> CREATE</a></li>
-            <li><a href="">UPLOAD</a></li>
-        </ul>
-        <div className="profile-picture-section">
-        <span className="upload-link" onClick={handleProfilePictureClick}>
-        <img src="../img/icons/userpicture.png"
-        alt="user"
-        className="w-50 h-50"  />
-        </span>
-        {/* Hidden file input for profile picture upload */}
-        <input
-        type="file"
-        accept="image/*"
-        style={{ display: 'none' }}
-        onChange={handleProfilePictureChange}
-        ref={fileInputRef}
-        />
-        {profilePicture && (
-        <img
-            src={URL.createObjectURL(profilePicture)}
-            alt="Profile"
-            className="profile-picture"
-        />
-        )}
-    </div>
-    </div>
 )
 }
 

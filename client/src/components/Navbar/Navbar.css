@@ -1,24 +1,80 @@
-.navbar {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-.business p:hover,
-.create p:hover,
-.analytics p:hover{
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: #F0F0F0;
-}
-.search input[type=text] {
-    width: 100%;
-    background-color: rgb(239,239,239);
-    border-radius: 10px;
-}
-.create ul, .analytics ul{
-    width: 150px;
-}
-.dropdown-menu-one {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+navbar-container {
+    background-color: #333;
     padding: 10px;
-    border-radius: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    margin-left: 10px;
+    color: rgb(190, 74, 74);
+    font-weight: bold;
+}
+
+.search-container {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.search-input {
+    height: 30px;
+    padding: 5px;
+    width: 100%;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(36, 34, 34);
+    font-weight: bold;
+}
+
+.profile-picture-section {
+    display: flex;
+    align-items: center;
+}
+
+.upload-link {
+    cursor: pointer;
+}
+
+.profile-picture-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.logo-icon {
+    width: 80px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
 }

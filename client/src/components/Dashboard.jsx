@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const dashboard = (props) => {
   return (
-    <div>dashboard</div>
+    <div></div>
   )
 }
 
